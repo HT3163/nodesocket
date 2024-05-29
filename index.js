@@ -2,10 +2,8 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
-// const bodyParser = require("body-parser")
 const app = express()
 const Routes = require("./routes/route.js")
-const serverless = require('serverless-http')
 const http = require('http');
 const socketIo = require('socket.io');
 const Student = require('./models/studentSchema.js');
@@ -35,11 +33,11 @@ mongoose
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
 
-app.use('/', Routes);
+app.use('/api/v1', Routes);
 
-// app.get('/', (req, res) => {
-//     res.send("Hello World")
-// })
+app.get('/', (req, res) => {
+    res.send("Hello World")
+})
 
 
 // app.listen(PORT, () => {
