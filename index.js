@@ -13,7 +13,7 @@ const Subject = require('./models/subjectSchema.js');
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "http://localhost:3000", // Your frontend URL
+        origin: process.env.FRONTEND_CORE_ACCESS, // Your frontend URL
         methods: ["GET", "POST"]
     }
 }); // Integrate Socket.IO with the HTTP server and set CORS
