@@ -13,9 +13,9 @@ const Subject = require('./models/subjectSchema.js');
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: process.env.FRONTEND_CORE_ACCESS, // Your frontend URL
+        origin: '*', // Your frontend URL
         methods: ["GET", "POST"],
-        allowedHeaders: ['Content-Type'],
+        allowedHeaders: ['Content-Type','Authorization'],
         credentials: true
     }
 }); // Integrate Socket.IO with the HTTP server and set CORS
@@ -26,7 +26,9 @@ dotenv.config();
 
 app.use(express.json({ limit: '10mb' }))
 app.use(cors({
-    origin: process.env.FRONTEND_CORE_ACCESS
+    origin: '*',
+    methods: [GET,HEAD,PUT,PATCH,POST,DELETE],
+    allowedHeaders: 'Content-Type,Authorization',
 }));
 
 mongoose
