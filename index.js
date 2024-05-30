@@ -26,9 +26,7 @@ dotenv.config();
 
 app.use(express.json({ limit: '10mb' }))
 app.use(cors({
-    origin: '*',
-    methods: [GET,HEAD,PUT,PATCH,POST,DELETE],
-    allowedHeaders: 'Content-Type,Authorization',
+    origin: '*'
 }));
 
 mongoose
